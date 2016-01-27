@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <TextField fx:id="bajaLibroTitulo" focusTraversable="false" layoutX="94.0" layoutY="66.0" promptText="Titulo" />
+        <TextField fx:id="bajaLibroEditorial" focusTraversable="false" layoutX="94.0" layoutY="148.0" promptText="Editorial" />
+        <TextField fx:id="bajaLibroAño" focusTraversable="false" layoutX="94.0" layoutY="228.0" promptText="Año de edicion" />
+        <Button fx:id="darBajaLibro" layoutX="135.0" layoutY="312.0" mnemonicParsing="false" text="Dar de baja" />
+    </children>
+</AnchorPane>

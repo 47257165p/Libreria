@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar prefHeight="29.0" prefWidth="403.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Cerrar" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Editar">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Suprimir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Acerca de..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Text layoutX="70.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a la mejor biblioteca del mundo. Eliga la opcion deseada." wrappingWidth="243.57470703125" />
+      <MenuButton layoutX="150.0" layoutY="139.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Libros">
+        <items>
+          <MenuItem fx:id="altaLibro" mnemonicParsing="false" onAction="#altaLibro" text="Dar de alta" />
+          <MenuItem fx:id="bajaLibro" mnemonicParsing="false" onAction="#bajaLibro" text="Dar de baja" />
+            <MenuItem fx:id="modificarLibro" mnemonicParsing="false" onAction="#modificarLibro" text="Modificar" />
+            <MenuItem fx:id="buscarLibro" mnemonicParsing="false" onAction="#buscarLibro" text="Buscar" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="149.0" layoutY="189.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Socios">
+        <items>
+          <MenuItem fx:id="altaSocio" mnemonicParsing="false" onAction="#altaSocio" text="Dar de alta" />
+            <MenuItem fx:id="bajaSocio" mnemonicParsing="false" onAction="#bajaSocio" text="Dar de baja" />
+          <MenuItem fx:id="modificarSocio" mnemonicParsing="false" onAction="#modificarSocio" text="Modificar" />
+            <MenuItem fx:id="buscarSocio" mnemonicParsing="false" onAction="#buscarSocio" text="Buscar" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="149.0" layoutY="240.0" mnemonicParsing="false" text="Prestamos">
+        <items>
+          <MenuItem fx:id="prestar" mnemonicParsing="false" onAction="#prestar" text="Realizar prestamo" />
+          <MenuItem fx:id="librosPrestados" mnemonicParsing="false" onAction="#librosPrestados" text="Listar libros prestados" />
+            <MenuItem fx:id="sociosPrestados" mnemonicParsing="false" onAction="#sociosPrestados" text="Prestamos de un socio" />
+            <MenuItem fx:id="prestamosExcedidosSocios" mnemonicParsing="false" onAction="#prestamosExcedidosSocios" text="Prestamos excedidos por socios" />
+            <MenuItem fx:id="prestamosExcedidosLibros" mnemonicParsing="false" onAction="#prestamosExcedidosLibros" text="Prestamos excedidos por libros" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
