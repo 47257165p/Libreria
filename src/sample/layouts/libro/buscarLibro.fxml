@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLibro">
     <children>
-        <TextField fx:id="buscarLibroTitulo" focusTraversable="false" layoutX="94.0" layoutY="65.0" promptText="Titulo" />
-        <TextField fx:id="buscarLibroEjemplares" focusTraversable="false" layoutX="94.0" layoutY="107.0" promptText="Numero de ejemplares" />
-        <TextField fx:id="buscarLibroPaginas" focusTraversable="false" layoutX="94.0" layoutY="188.0" promptText="Paginas" />
-        <TextField fx:id="buscarLibroEditorial" focusTraversable="false" layoutX="94.0" layoutY="148.0" promptText="Editorial" />
-        <TextField fx:id="buscarLibroAño" focusTraversable="false" layoutX="94.0" layoutY="228.0" promptText="Año de edicion" />
-        <Button fx:id="buscarLibros" layoutX="145.0" layoutY="309.0" mnemonicParsing="false" text="Buscar" />
+        <TextField fx:id="buscarLibroTitulo" focusTraversable="false" layoutX="94.0" layoutY="65.0" promptText="Título" />
+        <TextField fx:id="buscarLibroEditorial" focusTraversable="false" layoutX="94.0" layoutY="131.0" promptText="Editorial" />
+        <Button fx:id="buscarLibros" layoutX="144.0" layoutY="281.0" mnemonicParsing="false" onAction="#buscarLibro" text="Buscar" />
+      <Text fx:id="buscarLibroInfo" layoutX="94.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No se ha encontrado ningún libro" visible="false" wrappingWidth="171.0" />
+      <DatePicker fx:id="buscarLibroAño" layoutX="94.0" layoutY="203.0" prefHeight="25.0" prefWidth="171.0" promptText="Año de edición" />
     </children>
 </AnchorPane>

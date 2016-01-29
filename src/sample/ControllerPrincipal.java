@@ -8,40 +8,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Controller {
+public class ControllerPrincipal {
+
 
     public MenuItem altaLibro;
-    public TextField altaLibroTitulo;
-    public TextField altaLibroEjemplares;
-    public TextField altaLibroPaginas;
-    public TextField altaLibroEditorial;
-    public DatePicker altaLibroAño;
-    public Button guardarAltaLibro;
-
     public MenuItem bajaLibro;
-    public TextField bajaLibroTitulo;
-    public TextField bajaLibroEditorial;
-    public TextField bajaLibroAño;
-    public Button darBajaLibro;
-
+    public MenuItem buscarLibro;
     public MenuItem modificarLibro;
+
     public TextField modificarLibroTitulo;
     public TextField modificarLibroEditorial;
     public TextField modificarLibroAño;
     public Button modificarLibros;
 
-    public MenuItem buscarLibro;
-    public TextField buscarLibroTitulo;
-    public TextField buscarLibroEjemplares;
-    public TextField buscarLibroPaginas;
-    public TextField buscarLibroEditorial;
-    public TextField buscarLibroAño;
-    public Button buscarLibros;
 
     public MenuItem altaSocio;
     public MenuItem bajaSocio;
@@ -53,10 +38,22 @@ public class Controller {
     public MenuItem prestamosExcedidosSocios;
     public MenuItem prestamosExcedidosLibros;
 
-    private ArrayList<Libro> libros = new ArrayList<>();
-    private ArrayList<Socio> socios;
-    private ArrayList<Prestamo> prestamos;
+    public static ArrayList<Libro> libros = new ArrayList<>();
+    public static ArrayList<Socio> socios;
+    public static ArrayList<Prestamo> prestamos;
 
+
+    public void initialize ()
+    {
+        DAO dao = new DAO();
+
+        try {libros = dao.actualizarArrayListLibros();}
+        catch(Exception e){};
+        try {socios = dao.actualizarArrayListSocios();}
+        catch(Exception e){};
+        try {prestamos = dao.actualizarArrayListPrestamos();}
+        catch(Exception e){};
+    }
 
     public void nuevaVentana(String type, String title)
     {
@@ -140,37 +137,7 @@ public class Controller {
         nuevaVentana("layouts/prestamo/prestamosExcedidosLibros.fxml", "Prestamos excedidos por libros");
     }
 
-    public void guardarAltaLibroEvent(ActionEvent actionEvent) {
-
-        if (!altaLibroTitulo.getText().equals("") &&
-                !altaLibroEjemplares.getText().equals("") &&
-                !altaLibroEditorial.getText().equals("") &&
-                !altaLibroPaginas.getText().equals("") &&
-                altaLibroAño.getValue()!=null)
-        {
-            if (comprobarNumero(altaLibroEjemplares.getText()) &&  comprobarNumero(altaLibroPaginas.getText()))
-            {
-                Libro libro = new Libro(altaLibroTitulo.getText(),
-                        Integer.parseInt(altaLibroEjemplares.getText()),
-                        altaLibroEditorial.getText(),
-                        Integer.parseInt(altaLibroPaginas.getText()),
-                        altaLibroAño.getValue());
-                libros.add(libro);
-                DAO dao = new DAO();
-                dao.saveBook(libro);
-            }
-            else
-            {
-
-            }
-        }
-        else
-        {
-            System.out.println("hay campos vacíos");
-        }
-
-    }
-    public boolean comprobarNumero(String numero)
+    public static boolean comprobarNumero(String numero)
     {
         try
         {
