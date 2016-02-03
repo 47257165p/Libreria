@@ -141,12 +141,32 @@ public class ControllerLibro {
 
             for (int x=0; x<ControllerPrincipal.libros.size(); x++)
             {
-                System.out.println(ControllerPrincipal.libros.get(x).getTitulo());
-                items.add(ControllerPrincipal.libros.get(x).getTitulo());
+                items.add(ControllerPrincipal.libros.get(x).toString());
             }
 
             listListarLibros.setItems(items);
 
+        }
+        if (!buscarLibroTitulo.getText().equals("") &&
+                buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() == null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getTitulo().equals(buscarLibroTitulo.getText()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
         }
     }
 }
