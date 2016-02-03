@@ -1,31 +1,40 @@
 package sample;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
 /**
  * Created by 47257165p on 15/01/16.
  */
-public class Libro {
+@Entity
+public class Libro implements Serializable
+{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
     private String titulo;
     private int numero;
     private String editorial;
     private int paginas;
-    private LocalDate añoEdicion;
+    private Date añoEdicion;
 
-    public Libro (String titulo, int numero, String editorial, int paginas, LocalDate añoEdicion)
+    public Libro (String titulo, int numero, String editorial, int paginas, Date añoEdicion)
     {
         this.titulo = titulo;
         this.numero = numero;
         this.editorial = editorial;
         this. paginas = paginas;
         this.añoEdicion = añoEdicion;
+    }
+    public Libro ()
+    {
+
     }
 
     public String getTitulo() {
@@ -60,11 +69,11 @@ public class Libro {
         this.paginas = paginas;
     }
 
-    public LocalDate getAñoEdicion() {
+    public Date getAñoEdicion() {
         return añoEdicion;
     }
 
-    public void setAñoEdicion(LocalDate añoEdicion) {
+    public void setAñoEdicion(Date añoEdicion) {
         this.añoEdicion = añoEdicion;
     }
 }

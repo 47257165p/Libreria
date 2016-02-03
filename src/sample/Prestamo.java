@@ -1,17 +1,21 @@
 package sample;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by 47257165p on 15/01/16.
  */
-public class Prestamo {
+@Entity
+public class Prestamo implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
     private Libro libro;
     private Socio socio;
     private Date fechaInicio;
@@ -23,6 +27,10 @@ public class Prestamo {
         this.socio = socio;
         this. fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
+    }
+    public Prestamo()
+    {
+
     }
 
     public Libro getLibro() {

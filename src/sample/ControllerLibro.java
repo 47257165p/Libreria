@@ -1,18 +1,17 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by 47257165p on 29/01/16.
@@ -40,7 +39,6 @@ public class ControllerLibro {
     public Button buscarLibros;
     public ListView listListarLibros;
 
-
     DAO dao = new DAO();
 
     public void guardarAltaLibroEvent(ActionEvent actionEvent) {
@@ -57,10 +55,12 @@ public class ControllerLibro {
                         Integer.parseInt(altaLibroEjemplares.getText()),
                         altaLibroEditorial.getText(),
                         Integer.parseInt(altaLibroPaginas.getText()),
-                        altaLibroAño.getValue());
+                        ControllerPrincipal.asDate(altaLibroAño.getValue()));
                 ControllerPrincipal.libros.add(libro);
                 dao.guardarLibro(libro);
+
                 altaLibroInfo.setText("El libro se ha dado de alta satisfactoriamente.");
+                altaLibroInfo.setVisible(true);
             }
             else
             {
@@ -84,19 +84,23 @@ public class ControllerLibro {
         {
             String titulo = bajaLibroTitulo.getText();
             String editorial = bajaLibroEditorial.getText();
-            LocalDate año = bajaLibroAño.getValue();
-            int borrado = 0;
+            Date año = ControllerPrincipal.asDate(bajaLibroAño.getValue());
+            int borrado = 1;
 
             for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
 
                 if (ControllerPrincipal.libros.get(i).getTitulo().equals(titulo) &&
                         ControllerPrincipal.libros.get(i).getEditorial().equals(editorial) &&
-                        ControllerPrincipal.libros.get(i).getAñoEdicion().isEqual(año))
+                        ControllerPrincipal.libros.get(i).getAñoEdicion().equals(año))
                 {
                     if (dao.borrarLibro(ControllerPrincipal.libros.get(i)))
                     {
                         ControllerPrincipal.libros.remove(i);
-                        borrado = 1;
+                        borrado = 0;
+                    }
+                    else {
+                        bajaLibroInfo.setText("No se ha podido eliminar el elemento de la base de datos.");
+                        bajaLibroInfo.setVisible(true);
                     }
                 }
             }
@@ -104,11 +108,13 @@ public class ControllerLibro {
             {
                 case 0: {
                     bajaLibroInfo.setText("El libro se ha dado de baja satisfactoriamente.");
+                    bajaLibroInfo.setVisible(true);
                     break;
                 }
 
                 case 1: {
                     bajaLibroInfo.setText("No se ha encontrado el libro indicado");
+                    bajaLibroInfo.setVisible(true);
                     break;
                 }
             }
@@ -130,8 +136,17 @@ public class ControllerLibro {
         {
             ControllerPrincipal controller = new ControllerPrincipal();
             controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            for (int x=0; x<ControllerPrincipal.libros.size(); x++)
+            {
+                System.out.println(ControllerPrincipal.libros.get(x).getTitulo());
+                items.add(ControllerPrincipal.libros.get(x).getTitulo());
+            }
+
+            listListarLibros.setItems(items);
+
         }
-
-
     }
 }

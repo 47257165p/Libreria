@@ -1,16 +1,20 @@
 package sample;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by 47257165p on 15/01/16.
  */
-public class Socio {
+@Entity
+public class Socio implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -26,6 +30,10 @@ public class Socio {
         this.edad = edad;
         this.direccion = direccion;
         this.telefono = telefono;
+    }
+    public Socio()
+    {
+
     }
 
     public String getNombre() {
