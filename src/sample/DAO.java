@@ -60,6 +60,39 @@ public class DAO {
         }
         finally {session.close();}
     }
+
+    public void guardarSocio(Socio socio) throws HibernateException
+    {
+        try
+        {
+            start();
+            session.save(socio);
+            transaction.commit();
+        }
+        catch (HibernateException e)
+        {
+            transaction.rollback();
+            throw new HibernateException("Error guardando socio", e);
+        }
+        finally {session.close();}
+    }
+
+    public void guardarPrestamo(Prestamo prestamo) throws HibernateException
+    {
+        try
+        {
+            start();
+            session.save(prestamo);
+            transaction.commit();
+        }
+        catch (HibernateException e)
+        {
+            transaction.rollback();
+            throw new HibernateException("Error guardando préstamo", e);
+        }
+        finally {session.close();}
+    }
+
     public boolean borrarLibro(Libro libro)
     {
         try
@@ -78,16 +111,45 @@ public class DAO {
             session.close();
         }
     }
+    public boolean borrarSocio(Socio socio)
+    {
+        try
+        {
+            start();
+            session.delete(socio);
+            transaction.commit();
+            return true;
+        }
+        catch (Exception e)
+        {
+            transaction.rollback();
+            return false;
+        }
+        finally {
+            session.close();
+        }
+    }
     public void borrarBasseDatos()
     {
         start();
-        session.clear();
+        session.createQuery("DELETE FROM Libro ").executeUpdate();
+        session.createQuery("DELETE FROM Prestamo ").executeUpdate();
+        session.createQuery("DELETE FROM Socio ").executeUpdate();
         transaction.commit();
         session.close();
     }
-    public void modifyBook()
+    public void modificarLibro(Libro libro)
     {
         start();
+        session.update(libro);
+        transaction.commit();
+        session.close();
     }
-
+    public void modificarSocio(Socio socio)
+    {
+        start();
+        session.update(socio);
+        transaction.commit();
+        session.close();
+    }
 }

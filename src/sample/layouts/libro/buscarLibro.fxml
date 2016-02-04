@@ -12,5 +12,6 @@
         <Button fx:id="buscarLibros" layoutX="144.0" layoutY="281.0" mnemonicParsing="false" onAction="#buscarLibro" text="Buscar" />
       <Text fx:id="buscarLibroInfo" layoutX="94.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No se ha encontrado ningún libro" visible="false" wrappingWidth="171.0" />
       <DatePicker fx:id="buscarLibroAño" layoutX="94.0" layoutY="203.0" prefHeight="25.0" prefWidth="171.0" promptText="Año de edición" />
+      <ListView fx:id="listBuscar" layoutX="-6.0" prefHeight="371.0" prefWidth="361.0" visible="false" />
     </children>
 </AnchorPane>

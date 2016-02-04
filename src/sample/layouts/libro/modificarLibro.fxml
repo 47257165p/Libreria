@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPrincipal">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLibro">
     <children>
         <TextField fx:id="modificarLibroTitulo" focusTraversable="false" layoutX="94.0" layoutY="66.0" promptText="Titulo" />
-        <TextField fx:id="modificarLibroEditorial" focusTraversable="false" layoutX="94.0" layoutY="148.0" promptText="Editorial" />
-        <TextField fx:id="modificarLibroAño" focusTraversable="false" layoutX="94.0" layoutY="228.0" promptText="Año de edicion" />
-        <Button fx:id="modificarLibros" layoutX="135.0" layoutY="312.0" mnemonicParsing="false" text="Modificar" />
+        <TextField fx:id="modificarLibroEditorial" focusTraversable="false" layoutX="94.0" layoutY="151.0" promptText="Editorial" />
+        <Button fx:id="modificarLibros" layoutX="143.0" layoutY="287.0" mnemonicParsing="false" onAction="#modificarLibros" text="Modificar" />
+      <TextField fx:id="modEjemplares" focusTraversable="false" layoutX="94.0" layoutY="109.0" promptText="Número de ejemplares" visible="false" />
+      <TextField fx:id="modPaginas" focusTraversable="false" layoutX="94.0" layoutY="197.0" promptText="Páginas" visible="false" />
+      <DatePicker fx:id="modAñoEdicion" layoutX="94.0" layoutY="241.0" prefHeight="25.0" prefWidth="171.0" promptText="Año de edición" visible="false" />
+      <Button fx:id="modLibros" layoutX="143.0" layoutY="287.0" mnemonicParsing="false" onAction="#modLibro" text="Modificar" visible="false" />
+      <Text fx:id="modInfo" layoutX="94.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información" visible="false" wrappingWidth="171.0" />
     </children>
 </AnchorPane>

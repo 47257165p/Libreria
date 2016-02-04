@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPrincipal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSocio">
     <children>
         <TextField fx:id="altaSocioNombre" focusTraversable="false" layoutX="94.0" layoutY="65.0" promptText="Nombre" />
         <TextField fx:id="altaSocioApellido1" focusTraversable="false" layoutX="94.0" layoutY="107.0" promptText="Primer apellido" />
-        <TextField fx:id="altaSocioApellido2" focusTraversable="false" layoutX="94.0" layoutY="188.0" promptText="Segundo apellido" />
+        <TextField fx:id="altaSocioApellido2" focusTraversable="false" layoutX="94.0" layoutY="147.0" promptText="Segundo apellido" />
         <TextField fx:id="altaSocioDireccion" focusTraversable="false" layoutX="94.0" layoutY="228.0" promptText="Direccion" />
         <TextField fx:id="altaSocioTelefono" focusTraversable="false" layoutX="94.0" layoutY="228.0" promptText="Telefono" />
-        <Button fx:id="guardarAltaLibro" layoutX="145.0" layoutY="309.0" mnemonicParsing="false" text="Guardar" />
-      <DatePicker fx:id="altaSocioEdad" layoutX="94.0" layoutY="146.0" prefHeight="26.0" prefWidth="171.0" promptText="Fecha nacimiento" />
+        <Button fx:id="guardarAltaSocio" layoutX="145.0" layoutY="309.0" mnemonicParsing="false" onAction="#guardarSocio" text="Guardar" />
+      <DatePicker fx:id="altaSocioEdad" layoutX="94.0" layoutY="188.0" prefHeight="26.0" prefWidth="171.0" promptText="Fecha nacimiento" />
+      <Text fx:id="guardarSocioInfo" layoutX="94.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Socio guardado correctamente" visible="false" wrappingWidth="171.0" />
     </children>
 </AnchorPane>

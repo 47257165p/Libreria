@@ -8,10 +8,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by 47257165p on 29/01/16.
@@ -29,7 +26,6 @@ public class ControllerLibro {
     public Text bajaLibroInfo;
     public TextField bajaLibroTitulo;
     public TextField bajaLibroEditorial;
-    public DatePicker bajaLibroAño;
     public Button darBajaLibro;
 
     public Text buscarLibroInfo;
@@ -37,7 +33,18 @@ public class ControllerLibro {
     public TextField buscarLibroEditorial;
     public DatePicker buscarLibroAño;
     public Button buscarLibros;
-    public ListView listListarLibros;
+    public ListView listBuscar;
+
+    public TextField modificarLibroTitulo;
+    public TextField modificarLibroEditorial;
+    public Button modificarLibros;
+    public TextField modEjemplares;
+    public TextField modPaginas;
+    public DatePicker modAñoEdicion;
+    public Button modLibros;
+    public Text modInfo;
+    Libro libro = null;
+    int iterator = 0;
 
     DAO dao = new DAO();
 
@@ -79,19 +86,16 @@ public class ControllerLibro {
     public void aceptarBajaLibro(ActionEvent actionEvent) {
 
         if (!bajaLibroTitulo.getText().equals("") &&
-                !bajaLibroEditorial.getText().equals("") &&
-                bajaLibroAño.getValue()!=null)
+                !bajaLibroEditorial.getText().equals(""))
         {
             String titulo = bajaLibroTitulo.getText();
             String editorial = bajaLibroEditorial.getText();
-            Date año = ControllerPrincipal.asDate(bajaLibroAño.getValue());
             int borrado = 1;
 
             for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
 
                 if (ControllerPrincipal.libros.get(i).getTitulo().equals(titulo) &&
-                        ControllerPrincipal.libros.get(i).getEditorial().equals(editorial) &&
-                        ControllerPrincipal.libros.get(i).getAñoEdicion().equals(año))
+                        ControllerPrincipal.libros.get(i).getEditorial().equals(editorial))
                 {
                     if (dao.borrarLibro(ControllerPrincipal.libros.get(i)))
                     {
@@ -134,8 +138,6 @@ public class ControllerLibro {
                 buscarLibroEditorial.getText().equals("") &&
                 buscarLibroAño.getValue() == null)
         {
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
@@ -143,8 +145,7 @@ public class ControllerLibro {
             {
                 items.add(ControllerPrincipal.libros.get(x).toString());
             }
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
 
         }
         else if (!buscarLibroTitulo.getText().equals("") &&
@@ -159,14 +160,10 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
-
             items.addAll(encontrados);
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
         }
         else if (buscarLibroTitulo.getText().equals("") &&
                 !buscarLibroEditorial.getText().equals("") &&
@@ -180,14 +177,11 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
             items.addAll(encontrados);
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
         }
         else if (buscarLibroTitulo.getText().equals("") &&
                 buscarLibroEditorial.getText().equals("") &&
@@ -201,14 +195,11 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
             items.addAll(encontrados);
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
         }
         else if (!buscarLibroTitulo.getText().equals("") &&
                 !buscarLibroEditorial.getText().equals("") &&
@@ -223,14 +214,11 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
             items.addAll(encontrados);
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
         }
         else if (!buscarLibroTitulo.getText().equals("") &&
                 buscarLibroEditorial.getText().equals("") &&
@@ -245,14 +233,11 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
             items.addAll(encontrados);
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
         }
         else if (buscarLibroTitulo.getText().equals("") &&
                 !buscarLibroEditorial.getText().equals("") &&
@@ -267,14 +252,11 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
             items.addAll(encontrados);
-
-            listListarLibros.setItems(items);
+            despuesBuscar(items);
         }
         else if (!buscarLibroTitulo.getText().equals("") &&
                 !buscarLibroEditorial.getText().equals("") &&
@@ -290,14 +272,95 @@ public class ControllerLibro {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
             }
-            ControllerPrincipal controller = new ControllerPrincipal();
-            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
 
             ObservableList<String> items = FXCollections.observableArrayList();
 
             items.addAll(encontrados);
+            despuesBuscar(items);
+        }
+    }
+    public void ocultarBuscar()
+    {
+        buscarLibroTitulo.setVisible(false);
+        buscarLibroEditorial.setVisible(false);
+        buscarLibroAño.setVisible(false);
+        buscarLibroInfo.setVisible(false);
+        listBuscar.setVisible(true);
+    }
+    public void despuesBuscar(ObservableList<String> items)
+    {
+        if (items.size()==0)
+        {
+            buscarLibroInfo.setText("No se ha encontrado ningún libro.");
+            buscarLibroInfo.setVisible(true);
+        }
+        else
+        {
+            listBuscar.setItems(items);
+            ocultarBuscar();
+        }
+    }
 
-            listListarLibros.setItems(items);
+    public void modLibro(ActionEvent actionEvent) {
+        modInfo.setVisible(false);
+        if (!modificarLibroTitulo.getText().equals(""))
+        {
+            libro.setTitulo(modificarLibroTitulo.getText());
+        }
+        if (!modificarLibroEditorial.getText().equals(""))
+        {
+            libro.setEditorial(modificarLibroEditorial.getText());
+        }
+        if (modAñoEdicion.getValue()!=null)
+        {
+                libro.setAñoEdicion(ControllerPrincipal.asDate(modAñoEdicion.getValue()));
+        }
+        if (!modEjemplares.getText().equals(""))
+        {
+            libro.setNumero(Integer.parseInt(modEjemplares.getText()));
+        }
+        if (!modPaginas.getText().equals(""))
+        {
+            libro.setPaginas(Integer.parseInt(modPaginas.getText()));
+        }
+        DAO dao = new DAO();
+        dao.modificarLibro(libro);
+        ControllerPrincipal.libros.remove(iterator);
+        ControllerPrincipal.libros.add(libro);
+        modInfo.setText("El libro se ha modificado de forma satisfactoria");
+        modInfo.setVisible(true);
+        libro = null;
+    }
+
+    public void modificarLibros(ActionEvent actionEvent) {
+        for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+            if (modificarLibroTitulo.getText().equals(ControllerPrincipal.libros.get(i).getTitulo())
+                    && modificarLibroEditorial.getText().equals(ControllerPrincipal.libros.get(i).getEditorial()))
+            {
+                libro = ControllerPrincipal.libros.get(i);
+                iterator = i;
+
+            }
+        }
+        if (libro!=null)
+        {
+            modificarLibroTitulo.clear();
+            modificarLibroTitulo.setPromptText(libro.getTitulo());
+            modificarLibroEditorial.clear();
+            modificarLibroEditorial.setPromptText(libro.getEditorial());
+            modAñoEdicion.setPromptText(libro.getAñoEdicion().toString());
+            modAñoEdicion.setVisible(true);
+            modEjemplares.setPromptText(String.valueOf(libro.getNumero()));
+            modEjemplares.setVisible(true);
+            modPaginas.setPromptText(String.valueOf(libro.getPaginas()));
+            modPaginas.setVisible(true);
+            modificarLibros.setVisible(false);
+            modLibros.setVisible(true);
+        }
+        else
+        {
+            modInfo.setText("No se ha encontrado el libro.");
+            modInfo.setVisible(true);
         }
     }
 }

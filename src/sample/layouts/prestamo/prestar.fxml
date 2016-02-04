@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPrincipal" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPrestamo">
+   <children>
+      <TextField fx:id="altaPrestamoLibro" layoutX="91.0" layoutY="65.0" promptText="Libro" />
+      <TextField fx:id="altaPrestamoSocio" layoutX="91.0" layoutY="131.0" promptText="Socio" />
+      <TextField fx:id="altaPrestamoInicio" layoutX="91.0" layoutY="190.0" promptText="Fecha inicio (dd/mm/yyyy)" />
+      <TextField fx:id="altaPrestamoFinal" layoutX="91.0" layoutY="251.0" promptText="Fecha final (dd/mm/yyyy)" />
+      <Text fx:id="altaPrestamoInfo" layoutX="91.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Préstamos realizado correctamente" visible="false" />
+      <Button fx:id="altaPrestamoAlta" layoutX="146.0" layoutY="310.0" mnemonicParsing="false" onAction="#prestarLibro" text="Prestar" />
+   </children>
+</AnchorPane>

@@ -7,12 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLibro">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLibro">
     <children>
         <TextField fx:id="bajaLibroTitulo" focusTraversable="false" layoutX="97.0" layoutY="104.0" promptText="Titulo" />
         <TextField fx:id="bajaLibroEditorial" focusTraversable="false" layoutX="97.0" layoutY="167.0" promptText="Editorial" />
-        <Button fx:id="darBajaLibro" layoutX="135.0" layoutY="312.0" mnemonicParsing="false" onAction="#aceptarBajaLibro" text="Dar de baja" />
-      <DatePicker fx:id="bajaLibroAño" layoutX="94.0" layoutY="242.0" prefHeight="25.0" prefWidth="171.0" />
+        <Button fx:id="darBajaLibro" layoutX="136.0" layoutY="254.0" mnemonicParsing="false" onAction="#aceptarBajaLibro" text="Dar de baja" />
       <Text fx:id="bajaLibroInfo" layoutX="97.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" wrappingWidth="171.0" />
     </children>
 </AnchorPane>

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPrincipal" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSocio">
+    <children>
+        <TextField fx:id="buscarSocioNombre" layoutX="92.0" layoutY="95.0" />
+        <TextField fx:id="buscarSocioApellido" layoutX="92.0" layoutY="181.0" />
+        <Button fx:id="buscarSocio" layoutX="146.0" layoutY="232.0" mnemonicParsing="false" onAction="#buscarSocio" text="Buscar" />
+        <Text fx:id="buscarSocioInfo" layoutX="92.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="171.0" />
+      <ListView fx:id="listBuscarSocio" layoutY="-5.0" prefHeight="323.0" prefWidth="355.0" visible="false" />
+    </children>
+</AnchorPane>

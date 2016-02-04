@@ -1,14 +1,14 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,12 +25,6 @@ public class ControllerPrincipal {
     public MenuItem buscarLibro;
     public MenuItem modificarLibro;
 
-    public TextField modificarLibroTitulo;
-    public TextField modificarLibroEditorial;
-    public TextField modificarLibroAño;
-    public Button modificarLibros;
-
-
     public MenuItem altaSocio;
     public MenuItem bajaSocio;
     public MenuItem modificarSocio;
@@ -44,6 +38,7 @@ public class ControllerPrincipal {
     public static ArrayList<Libro> libros = new ArrayList<>();
     public static ArrayList<Socio> socios;
     public static ArrayList<Prestamo> prestamos;
+    public ListView listSociosPrestados;
 
 
     public void initialize ()
@@ -123,6 +118,16 @@ public class ControllerPrincipal {
     public void librosPrestados(ActionEvent actionEvent)
     {
         nuevaVentana("layouts/prestamo/librosPrestados.fxml", "Libros en prestamo");
+        ObservableList<String> items = FXCollections.observableArrayList();
+
+        if (prestamos != null)
+        {
+            for (int i = 0; i < prestamos.size(); i++) {
+                items.add(prestamos.toString());
+                System.out.println(prestamos.get(i).toString());
+            }
+            listSociosPrestados.setItems(items);
+        }
     }
 
     public void sociosPrestados(ActionEvent actionEvent)

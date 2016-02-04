@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by 47257165p on 15/01/16.
@@ -18,11 +19,11 @@ public class Socio implements Serializable{
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private int edad;
+    private Date edad;
     private String direccion;
     private int telefono;
 
-    public Socio (String nombre, String apellido1, String apellido2, int edad, String direccion, int telefono)
+    public Socio (String nombre, String apellido1, String apellido2, Date edad, String direccion, int telefono)
     {
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -60,11 +61,11 @@ public class Socio implements Serializable{
         this.apellido2 = apellido2;
     }
 
-    public int getEdad() {
+    public Date getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Date edad) {
         this.edad = edad;
     }
 
@@ -82,5 +83,16 @@ public class Socio implements Serializable{
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "Socio" +
+                "\n Nombre: " + nombre +
+                "\n Primer apellido: " + apellido1 +
+                "\n Segundo apellido: " + apellido2 +
+                "\n Edad: " + edad +
+                "\n Dirección: " + direccion +
+                "\n Teléfono: " + telefono +"\n";
     }
 }

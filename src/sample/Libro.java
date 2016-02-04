@@ -76,4 +76,22 @@ public class Libro implements Serializable
     public void setAñoEdicion(Date añoEdicion) {
         this.añoEdicion = añoEdicion;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return " Libro " +
+                "\n Título: " + titulo +
+                "\n Editorial: " + editorial +
+                "\n Número de ejemplares: " + numero +
+                "\n Páginas: " + paginas +
+                "\n Año de edición: " + añoEdicion+"\n";
+    }
 }
