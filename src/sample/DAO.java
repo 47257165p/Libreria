@@ -78,5 +78,16 @@ public class DAO {
             session.close();
         }
     }
+    public void borrarBasseDatos()
+    {
+        start();
+        session.clear();
+        transaction.commit();
+        session.close();
+    }
+    public void modifyBook()
+    {
+        start();
+    }
 
 }

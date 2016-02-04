@@ -155,4 +155,9 @@ public class ControllerPrincipal {
     public static Date asDate(LocalDate localDate) {
         return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     }
+
+    public void borrarBBDD(ActionEvent actionEvent) {
+        DAO dao = new DAO();
+        dao.borrarBasseDatos();
+    }
 }

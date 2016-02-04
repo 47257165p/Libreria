@@ -147,7 +147,7 @@ public class ControllerLibro {
             listListarLibros.setItems(items);
 
         }
-        if (!buscarLibroTitulo.getText().equals("") &&
+        else if (!buscarLibroTitulo.getText().equals("") &&
                 buscarLibroEditorial.getText().equals("") &&
                 buscarLibroAño.getValue() == null)
         {
@@ -155,6 +155,137 @@ public class ControllerLibro {
 
             for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
                 if (ControllerPrincipal.libros.get(i).getTitulo().equals(buscarLibroTitulo.getText()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
+        }
+        else if (buscarLibroTitulo.getText().equals("") &&
+                !buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() == null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getEditorial().equals(buscarLibroEditorial.getText()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
+        }
+        else if (buscarLibroTitulo.getText().equals("") &&
+                buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() != null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getAñoEdicion().equals(buscarLibroAño.getValue()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
+        }
+        else if (!buscarLibroTitulo.getText().equals("") &&
+                !buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() == null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getTitulo().equals(buscarLibroTitulo.getText()) &&
+                        ControllerPrincipal.libros.get(i).getEditorial().equals(buscarLibroEditorial.getText()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
+        }
+        else if (!buscarLibroTitulo.getText().equals("") &&
+                buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() != null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getTitulo().equals(buscarLibroTitulo.getText()) &&
+                        ControllerPrincipal.libros.get(i).getAñoEdicion().equals(buscarLibroAño.getValue()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
+        }
+        else if (buscarLibroTitulo.getText().equals("") &&
+                !buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() != null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getEditorial().equals(buscarLibroEditorial.getText()) &&
+                        ControllerPrincipal.libros.get(i).getAñoEdicion().equals(buscarLibroAño.getValue()))
+                {
+                    encontrados.add(ControllerPrincipal.libros.get(i).toString());
+                }
+            }
+            ControllerPrincipal controller = new ControllerPrincipal();
+            controller.nuevaVentana("layouts/libro/listaLibros.fxml", "Lista de libros");
+
+            ObservableList<String> items = FXCollections.observableArrayList();
+
+            items.addAll(encontrados);
+
+            listListarLibros.setItems(items);
+        }
+        else if (!buscarLibroTitulo.getText().equals("") &&
+                !buscarLibroEditorial.getText().equals("") &&
+                buscarLibroAño.getValue() != null)
+        {
+            ArrayList<String> encontrados = new ArrayList<>();
+
+            for (int i = 0; i < ControllerPrincipal.libros.size(); i++) {
+                if (ControllerPrincipal.libros.get(i).getTitulo().equals(buscarLibroTitulo.getText()) &&
+                        ControllerPrincipal.libros.get(i).getEditorial().equals(buscarLibroEditorial.getText()) &&
+                        ControllerPrincipal.libros.get(i).getAñoEdicion().equals(buscarLibroAño.getValue()))
                 {
                     encontrados.add(ControllerPrincipal.libros.get(i).toString());
                 }
